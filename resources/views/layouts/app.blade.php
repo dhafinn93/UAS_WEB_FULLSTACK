@@ -68,8 +68,8 @@
                 <ul class="navbar-nav ms-auto align-items-center">
                     
                     @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login">Login</a>
+                        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                            <a class="btn btn-light text-primary fw-bold px-4 rounded-pill" href="/login">Login</a>
                         </li>
                     @endguest
 
@@ -107,4 +107,8 @@
         </div>
     </footer>
 
-    <script src
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    @stack('js')
+
+</body>
+</html>
