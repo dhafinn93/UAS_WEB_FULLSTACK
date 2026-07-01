@@ -122,12 +122,11 @@ Dashboard
 
 @else
 
-<li class="nav-item">
-<a class="nav-link"
-href="/user/dashboard">
+    <li class="nav-item">
+        <a class="nav-link" href="/user/dashboard">
 Dashboard
-</a>
-</li>
+        </a>
+    </li>
 
 @endif
 
