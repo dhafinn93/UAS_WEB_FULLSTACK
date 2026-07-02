@@ -6,9 +6,9 @@
     <title>Register - Kos Impianmu</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <style>
-
         body{
             margin:0;
             height:100vh;
@@ -39,7 +39,6 @@
         a{
             text-decoration:none;
         }
-
     </style>
 
 </head>
@@ -50,6 +49,10 @@
 
     <div class="card-body p-5">
 
+        <a href="/login" class="btn btn-danger btn-sm position-absolute top-0 start-0 m-3 shadow-sm">
+            <i class="bi bi-arrow-left"></i> Back
+        </a>
+
         <h2 class="text-center text-primary fw-bold">
             Kos Impianmu
         </h2>
@@ -58,65 +61,62 @@
             Buat Akun Baru
         </p>
 
+        {{-- Notifikasi Error --}}
+        @if($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="bi bi-exclamation-triangle-fill"></i>
+                {{ $errors->first() }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
+
         <form method="POST" action="/register">
             @csrf
 
             <div class="mb-3">
-
                 <label>Nama</label>
-
                 <input
                     type="text"
                     name="name"
                     class="form-control"
                     placeholder="Masukkan Nama"
+                    value="{{ old('name') }}"
                     required>
-
             </div>
 
             <div class="mb-3">
-
                 <label>Email</label>
-
                 <input
                     type="email"
                     name="email"
                     class="form-control"
                     placeholder="Masukkan Email"
+                    value="{{ old('email') }}"
                     required>
-
             </div>
 
             <div class="mb-3">
-
                 <label>Password</label>
-
                 <input
                     type="password"
                     name="password"
                     class="form-control"
                     placeholder="Masukkan Password"
                     required>
-
             </div>
 
             <div class="mb-4">
-
                 <label>Konfirmasi Password</label>
-
                 <input
                     type="password"
                     name="password_confirmation"
                     class="form-control"
                     placeholder="Ulangi Password"
                     required>
-
             </div>
 
-            <button class="btn btn-register w-100">
-
+            <button type="submit" class="btn btn-register w-100">
                 Daftar
-
             </button>
 
         </form>
@@ -124,19 +124,15 @@
         <hr>
 
         <div class="text-center">
-
             Sudah punya akun?
-
             <a href="/login">Login</a>
-   
-
-            </a>
-
         </div>
 
     </div>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
