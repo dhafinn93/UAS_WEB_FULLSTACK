@@ -6,7 +6,8 @@
     <title>Login - Kos Impianmu</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
     <style>
         body{
             margin:0;
@@ -43,8 +44,10 @@
 <body>
 
 <div class="card card-login">
-    <div class="card-body p-5">
-
+    <div class="card-body p-5 ">
+        <a href="/" class="btn btn-danger">
+    <i class="bi bi-arrow-left"></i> Kembali
+</a>
         <h2 class="text-center text-primary fw-bold">
             Kos Impianmu
         </h2>

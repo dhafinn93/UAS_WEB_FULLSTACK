@@ -65,34 +65,65 @@
             </button>
 
             <div class="collapse navbar-collapse" id="menu">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    
-                    @guest
-                        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
-                            <a class="btn btn-light text-primary fw-bold px-4 rounded-pill" href="/login">Login</a>
-                        </li>
-                    @endguest
 
-                    @auth
-                        @if(Auth::user()->role == 'admin')
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/dashboard">Dashboard</a>
-                            </li>
-                        @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="/user/dashboard">Dashboard</a>
-                            </li>
-                        @endif
+    <ul class="navbar-nav ms-auto align-items-center">
 
-                        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
-                            <form action="{{ route('logout') }}" method="POST" class="d-inline">
-                                @csrf
-                                <button type="submit" class="btn btn-danger btn-sm">Logout</button>
-                            </form>
-                        </li>
-                    @endauth
-                </ul>
-            </div>
+        @guest
+
+            <!-- <li class="nav-item me-2">
+                <a class="nav-link" href="/">
+                    Beranda
+                </a>
+            </li> -->
+
+            <li class="nav-item">
+                <a href="/login" class="btn btn-light text-primary fw-bold px-4 rounded-pill">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    Login
+                </a>
+            </li>
+
+        @endguest
+
+        @auth
+
+            @if(Auth::user()->role == 'admin')
+
+                <li class="nav-item">
+                    <a href ="/admin/dashboard">
+                    <span class="nav-link">
+                            <i class="fa-solid fa-user-shield"></i>
+                            {{ Auth::user()->name }}
+                        </a>
+                    </span>
+                </li>
+
+            @else
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/dashboard">
+                        Dashboard
+                    </a>
+                </li>
+
+            @endif
+
+            <li class="nav-item ms-3">
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+
+                    <button type="submit" class="btn btn-danger btn-sm">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        Logout
+                    </button>
+                </form>
+            </li>
+
+        @endauth
+
+    </ul>
+
+</div>
         </div>
     </nav>
 
