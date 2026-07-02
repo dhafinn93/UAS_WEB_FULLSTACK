@@ -12,10 +12,8 @@ class DashboardController extends Controller
     {
         $query = Kos::query();
 
-        if($request->filled('search')){
-
-            $query->where('nama','like','%'.$request->search.'%');
-
+        if ($request->filled('search')) {
+            $query->where('nama', 'like', '%' . $request->search . '%');
         }
 
         $kos = $query->latest()->get();

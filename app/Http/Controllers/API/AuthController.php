@@ -1,72 +1,82 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Web;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    // Register
+    // Menampilkan halaman register
+    public function showRegister()
+    {
+        return view('auth.register');
+    }
+
+    // Proses register
     public function register(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required'
+            'password' => 'required|min:6|confirmed',
         ]);
 
-        $user = User::create([
+        User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'user'
+            'role' => 'user',
         ]);
 
-        return response()->json([
-            'message' => 'Register berhasil',
-            'user' => $user,
-        ]);
+        return redirect('/login')
+            ->with('success', 'Pendaftaran berhasil! Silakan login.');
     }
 
-    // Login
+    // Menampilkan halaman login
+    public function showLogin()
+    {
+        return view('auth.login');
+    }
+
+    // Proses login
     public function login(Request $request)
     {
-        $user = User::where('email', $request->email)->first();
-
-        if(!$user || !Hash::check($request->password, $user->password)){
-
-            return response()->json([
-                'message' => 'Login gagal'
-            ],401);
-    }
-
-        $token = $user->createToken('auth_token')->plainTextToken;
-
-        return response()->json([
-            'token' => $token,
-            'user' => $user
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
+
+        if (Auth::attempt($credentials)) {
+
+            $request->session()->regenerate();
+
+            if (Auth::user()->role == 'admin') {
+                return redirect('/admin/dashboard')
+                    ->with('success', 'Login berhasil. Selamat datang Admin!');
+            }
+
+            return redirect('/user/dashboard')
+                ->with('success', 'Login berhasil. Selamat datang, ' . Auth::user()->name . '!');
+        }
+
+        return back()
+            ->withInput()
+            ->with('error', 'Email atau Password salah.');
     }
 
     // Logout
     public function logout(Request $request)
     {
-        $request->user()->currentAccessToken()->delete();
+        Auth::logout();
 
-        return response()->json([
-            'message' => 'Logout berhasil'
-        ]);
-    }
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-    // Profile User Login
-    public function profile(Request $request)
-    {
-        return response()->json([
-            'user' => $request->user()
-        ]);
+        return redirect('/')
+            ->with('success', 'Anda berhasil logout.');
     }
 }
