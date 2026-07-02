@@ -17,7 +17,7 @@
             </h2>
 
             <p class="text-muted mb-0">
-                Selamat datang,
+                Selamat datang,Wahai Anomali
                 <strong>{{ Auth::user()->name }}</strong>.
                 Temukan kos terbaik sesuai kebutuhan Anda.
             </p>
