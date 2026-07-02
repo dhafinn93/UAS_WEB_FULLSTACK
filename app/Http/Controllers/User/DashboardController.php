@@ -3,17 +3,23 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Review;
+use App\Models\Kos;
+use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $review = Review::where(
-            'user_id',
-            auth()->id()
-        )->count();
+        $query = Kos::query();
 
-        return view('user.dashboard', compact('review'));
+        if($request->filled('search')){
+
+            $query->where('nama','like','%'.$request->search.'%');
+
+        }
+
+        $kos = $query->latest()->get();
+
+        return view('user.dashboard', compact('kos'));
     }
 }

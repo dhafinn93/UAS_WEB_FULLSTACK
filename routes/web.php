@@ -12,15 +12,14 @@ use App\Http\Controllers\User\DashboardController as UserDashboardController;
 Route::middleware(['auth','admin'])->group(function(){
 
     Route::get('/admin/dashboard',[DashboardController::class,'index']);
-    Route::resource('admin/kos',KosController::class);
+    Route::resource('/admin/kos',KosController::class);
 });
 
 //User
 Route::middleware(['auth','user'])->group(function(){
 
     Route::get('/user/dashboard', [UserDashboardController::class,'index']);
-    Route::post('/user/review', [ReviewController::class,'store']);
-    Route::get('/user/reviews', [ReviewController::class,'index']);
+    Route::resource('/user/review',ReviewController::class);
 });
 
 //publik

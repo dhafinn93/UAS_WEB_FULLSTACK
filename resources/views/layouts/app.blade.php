@@ -90,19 +90,18 @@
             @if(Auth::user()->role == 'admin')
 
                 <li class="nav-item">
-                    <a href ="/admin/dashboard">
-                    <span class="nav-link">
-                            <i class="fa-solid fa-user-shield"></i>
-                            {{ Auth::user()->name }}
-                        </a>
-                    </span>
+                    <a class="nav-link" href="/admin/dashboard">
+                        <i class="fa-solid fa-user-shield"></i>
+                        {{ Auth::user()->name }}
+                    </a>
                 </li>
 
             @else
 
                 <li class="nav-item">
                     <a class="nav-link" href="/user/dashboard">
-                        Dashboard
+                        <i class="fa-solid fa-user"></i>
+                        {{ Auth::user()->name }}
                     </a>
                 </li>
 
