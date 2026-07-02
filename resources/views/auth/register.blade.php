@@ -6,6 +6,7 @@
     <title>Register - Kos Impianmu</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">  
 
     <style>
 
@@ -49,6 +50,10 @@
 <div class="card card-register">
 
     <div class="card-body p-5">
+
+        <a href="/" class="btn btn-danger btn-sm position-absolute top-0 start-0 m-3">
+        <i class="bi bi-arrow-left"></i> Back
+        </a>
 
         <h2 class="text-center text-primary fw-bold">
             Kos Impianmu
