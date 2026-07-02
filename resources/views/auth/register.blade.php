@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Kos Impianmu</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        body{
+            margin:0;
+            height:100vh;
+            background:linear-gradient(135deg,#0d6efd,#32a8ff);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-family:'Segoe UI',sans-serif;
+        }
+
+        .card-register{
+            width:450px;
+            border:none;
+            border-radius:18px;
+            box-shadow:0 10px 30px rgba(0,0,0,.2);
+        }
+
+        .btn-register{
+            background:#ffc107;
+            border:none;
+            font-weight:bold;
+        }
+
+        .btn-register:hover{
+            background:#ffb300;
+        }
+
+        a{
+            text-decoration:none;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="card card-register">
+
+    <div class="card-body p-5">
+
+        <h2 class="text-center text-primary fw-bold">
+            Kos Impianmu
+        </h2>
+
+        <p class="text-center text-muted mb-4">
+            Buat Akun Baru
+        </p>
+
+        <form method="POST" action="/register">
+            @csrf
+
+            <div class="mb-3">
+
+                <label>Nama</label>
+
+                <input
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    placeholder="Masukkan Nama"
+                    required>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    name="email"
+                    class="form-control"
+                    placeholder="Masukkan Email"
+                    required>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    placeholder="Masukkan Password"
+                    required>
+
+            </div>
+
+            <div class="mb-4">
+
+                <label>Konfirmasi Password</label>
+
+                <input
+                    type="password"
+                    name="password_confirmation"
+                    class="form-control"
+                    placeholder="Ulangi Password"
+                    required>
+
+            </div>
+
+            <button class="btn btn-register w-100">
+
+                Daftar
+
+            </button>
+
+        </form>
+
+        <hr>
+
+        <div class="text-center">
+
+            Sudah punya akun?
+
+            <a href="/login">Login</a>
+   
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
