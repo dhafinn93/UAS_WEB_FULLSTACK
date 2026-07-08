@@ -99,7 +99,7 @@
 
             <a href="/admin/kos" class="btn btn-success">
                 <i class="fa-solid fa-circle-plus"></i>
-                Tambah Data Kos
+                Kelola Data Kos
             </a>
 
         </div>

@@ -108,7 +108,7 @@
                         Simpan
                     </button>
 
-                    <a href="/admin/kos" class="btn btn-secondary">
+                    <a href="/admin/kos" class="btn btn-secondary btn-danger">
                         <i class="fa-solid fa-arrow-left"></i>
                         Kembali
                     </a>

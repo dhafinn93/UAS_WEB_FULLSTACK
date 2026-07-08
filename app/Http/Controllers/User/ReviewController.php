@@ -25,13 +25,12 @@ class ReviewController extends Controller
     /**
      * Form tambah review
      */
-    public function create()
+    public function create($id)
     {
-        $kos = Kos::all();
+        $kos = Kos::findOrFail($id);
 
         return view('user.review.create', compact('kos'));
     }
-
     /**
      * Simpan review
      */

@@ -19,6 +19,7 @@ Route::middleware(['auth','admin'])->group(function(){
 Route::middleware(['auth','user'])->group(function(){
 
     Route::get('/user/dashboard', [UserDashboardController::class,'index']);
+    Route::get('/user/review/create/{id}', [ReviewController::class,'create']);
     Route::resource('/user/review',ReviewController::class);
 });
 

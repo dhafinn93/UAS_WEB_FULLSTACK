@@ -8,11 +8,19 @@ use App\Models\Kos;
 class HomeController extends Controller
 {
     // Halaman Home
-    public function index()
+    public function index(Request $request)
     {
-        $kos = Kos::all();
+        $query = Kos::query();
 
-        return view('home', compact('kos'));
+        if ($request->filled('search')) {
+
+        $query->where('nama_kos', 'like', '%' . $request->search . '%');
+
+    }
+
+    $kos = $query->get();
+
+    return view('home', compact('kos'));
     }
 
     // Detail Kos
@@ -20,6 +28,6 @@ class HomeController extends Controller
     {
         $kos = Kos::with(['reviews.user'])->findOrFail($id);
 
-        return view('detail-kos', compact('kos'));
+        return view('detail_kos', compact('kos'));
     }
 }

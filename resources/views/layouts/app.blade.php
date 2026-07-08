@@ -40,8 +40,7 @@
         footer {
             background: #222;
             color: white;
-            padding: 20px;
-            margin-top: 70px;
+            padding: 10px 0;
         }
         .harga {
             color: #0d6efd;
@@ -52,7 +51,7 @@
 
     @stack('css')
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <nav class="navbar navbar-expand-lg">
         <div class="container">
@@ -101,7 +100,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/user/dashboard">
                         <i class="fa-solid fa-user"></i>
-                        {{ Auth::user()->name }}
+                        {{ Auth::user()->Pengunjung }}
                     </a>
                 </li>
 
@@ -126,14 +125,13 @@
         </div>
     </nav>
 
-    <main>
+    <main class="flex-grow-1">
         @yield('content')
     </main>
 
     <footer>
         <div class="container text-center">
-            
-            <p>&copy; {{ date('Y') }} SI-KOS</p>
+            <p>&copy; {{ date('Y') }} ANOMALI TEAM</p>
         </div>
     </footer>
 
