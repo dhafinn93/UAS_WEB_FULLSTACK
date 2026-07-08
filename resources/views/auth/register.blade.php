@@ -39,6 +39,16 @@
         a{
             text-decoration:none;
         }
+
+        .toggle-password {
+            cursor: pointer;
+            color: #6c757d;
+            transition: color 0.2s;
+        }
+
+        .toggle-password:hover {
+            color: #0d6efd;
+        }
     </style>
 
 </head>
@@ -97,22 +107,34 @@
 
             <div class="mb-3">
                 <label>Password</label>
-                <input
-                    type="password"
-                    name="password"
-                    class="form-control"
-                    placeholder="Masukkan Password"
-                    required>
+                <div class="input-group">
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        class="form-control"
+                        placeholder="Masukkan Password"
+                        required>
+                    <span class="input-group-text toggle-password" onclick="togglePassword('password', 'icon-password')">
+                        <i class="bi bi-eye" id="icon-password"></i>
+                    </span>
+                </div>
             </div>
 
             <div class="mb-4">
                 <label>Konfirmasi Password</label>
-                <input
-                    type="password"
-                    name="password_confirmation"
-                    class="form-control"
-                    placeholder="Ulangi Password"
-                    required>
+                <div class="input-group">
+                    <input
+                        type="password"
+                        name="password_confirmation"
+                        id="password_confirmation"
+                        class="form-control"
+                        placeholder="Ulangi Password"
+                        required>
+                    <span class="input-group-text toggle-password" onclick="togglePassword('password_confirmation', 'icon-confirm')">
+                        <i class="bi bi-eye" id="icon-confirm"></i>
+                    </span>
+                </div>
             </div>
 
             <button type="submit" class="btn btn-register w-100">
@@ -133,6 +155,21 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    function togglePassword(inputId, iconId) {
+        const input = document.getElementById(inputId);
+        const icon  = document.getElementById(iconId);
+
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.replace('bi-eye', 'bi-eye-slash');
+        } else {
+            input.type = 'password';
+            icon.classList.replace('bi-eye-slash', 'bi-eye');
+        }
+    }
+</script>
 
 </body>
 </html>

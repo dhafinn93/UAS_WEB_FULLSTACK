@@ -25,7 +25,7 @@ Route::middleware(['auth','user'])->group(function(){
 
 //publik
 Route::get('/',[HomeController::class,'index']);
-Route::get('/kos/{id}',[HomeController::class,'show']);
+Route::get('/detail_kos/{id}',[HomeController::class,'show']);
 Route::get('/login',[AuthController::class,'showLogin'])->name('login');
 Route::post('/login',[AuthController::class,'login']);
 Route::get('/register',[AuthController::class,'showRegister']);
