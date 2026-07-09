@@ -113,7 +113,7 @@
                         Kirim Review
                     </button>
 
-                    <a href="/user/review" class="btn btn-danger">
+                    <a href="/user/dashboard" class="btn btn-danger">
                         <i class="fa-solid fa-arrow-left"></i>
                         Batal
                     </a>
