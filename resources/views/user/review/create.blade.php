@@ -96,7 +96,7 @@
                               id="komentar"
                               rows="5"
                               class="form-control @error('komentar') is-invalid @enderror"
-                              placeholder="Ceritakan pengalamanmu mengenai kos ini..."
+                              placeholder="Ceritakan Pengalaman Horor mu..."
                               maxlength="1000"
                               required>{{ old('komentar') }}</textarea>
                     <div class="form-text text-end">
