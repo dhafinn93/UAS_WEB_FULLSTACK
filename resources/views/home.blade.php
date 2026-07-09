@@ -39,7 +39,7 @@
                         @endif
 
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">{{ $item->nama }}</h5>
+                            <h5 class="card-title">{{ $item->nama_kos }}</h5>
                             <p class="card-text text-muted">
                                 <i class="fa fa-location-dot text-danger"></i> {{ $item->alamat }}
                             </p>
