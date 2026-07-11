@@ -42,8 +42,43 @@ Aplikasi web pencarian dan manajemen kos berbasis Laravel yang memungkinkan peng
     - Migration — manajemen skema database secara versional dan terstruktur
     - Session & Flash Message — notifikasi sukses/error antar request
     - Route Resource — pendaftaran route CRUD otomatis untuk kos dan review
-  
-3. Fungsi dan Fitur Proyek yang Dibangun
+
+   API yang digunakan yaitu:
+
+   API Publik
+    | Method | Endpoint | Fungsi |  
+    | :--- | :--- | :--- | 
+    | GET | / | Menampilkan beranda dengan daftar semua kos |   
+    | GET | /detail_kos/{id} | Menampilkan halaman detail kos beserta ulasan |   
+    | GET | /login | Menampilkan form login |   
+    | POST | /login | Memproses login pengguna |   
+    | GET | /register | Menampilkan form registrasi |   
+    | POST | /register | Memproses pendaftaran akun baru |   
+    | POST | /logout | Memproses logout dan mengakhiri sesi |
+
+   Endpoint Admin (memerlukan autentikasi + role admin)
+    | Method | Endpoint | Fungsi |  
+    | :--- | :--- | :--- | 
+    | GET | /admin/dashboard | Menampilkan halaman dashboard admin |   
+    | GET | /admin/kos | Menampilkan daftar semua kos |   
+    | GET | /admin/kos/create | Menampilkan form tambah kos baru |   
+    | POST | /admin/kos | Menyimpan data kos baru beserta foto |   
+    | GET | /admin/kos/{id}/edit | Menampilkan form edit kos |   
+    | PUT | /admin/kos/{id} | Memperbarui data kos (foto lama otomatis dihapus) |   
+    | DELETE | /admin/kos/{id} | Menghapus kos beserta foto dari storage |
+
+    Endpoint User (memerlukan autentikasi + role user)
+    | Method | Endpoint | Fungsi |  
+    | :--- | :--- | :--- | 
+    | GET | /user/dashboard | Menampilkan halaman dashboard user |   
+    | GET | /user/review | Menampilkan daftar review milik user |   
+    | GET | /user/review/create/{id} | Menampilkan form buat review untuk kos tertentu |   
+    | POST | /user/review | Menyimpan review baru |   
+    | GET | /user/review/{id}/edit| Menampilkan form edit review |   
+    | PUT | /user/review/{id} | Memperbarui review milik sendiri |   
+    | DELETE | /user/review/{id} | Menghapus review milik sendiri |
+   
+4. Fungsi dan Fitur Proyek yang Dibangun
 
     🔐 Autentikasi
 
@@ -84,7 +119,7 @@ Aplikasi web pencarian dan manajemen kos berbasis Laravel yang memungkinkan peng
 
    Tabel reviews menggunakan foreign key onDelete('cascade') — jika kos dihapus, semua reviewnya ikut terhapus otomatis.
 
-4. Kelebihan Proyek yang Dibangun
+5. Kelebihan Proyek yang Dibangun
 
       - Sistem Role Terpisah dan Aman — Admin dan user memiliki akses, route, dan tampilan yang sepenuhnya terpisah, dikelola melalui middleware sehingga tidak bisa saling mengakses.
       - Proteksi Data di Level Controller — Setiap operasi pada review (lihat, edit, hapus) dilindungi pengecekan user_id di controller, bukan hanya di route, sehingga lebih aman dari manipulasi URL.
@@ -97,7 +132,7 @@ Aplikasi web pencarian dan manajemen kos berbasis Laravel yang memungkinkan peng
       - Flash Message — Setiap aksi CRUD menampilkan notifikasi sukses atau error yang otomatis hilang, memberikan feedback yang jelas kepada pengguna.
       - Cascade Delete Otomatis — Relasi database dengan onDelete('cascade') memastikan integritas data terjaga tanpa perlu penghapusan manual secara berlapis.
 
-5. Kekurangan Proyek yang Dibangun (Bug / Warning)
+6. Kekurangan Proyek yang Dibangun (Bug / Warning)
 
    - Tidak Ada Validasi Duplikat Review — Seorang user dapat memberikan lebih dari satu review untuk kos yang sama tanpa pembatasan. Idealnya ditambahkan validasi unique(['user_id', 'kos_id']) di tabel reviews dan pengecekan di controller sebelum menyimpan.
    - Tidak Ada Pagination — Daftar kos di beranda dan daftar review di panel user ditampilkan sekaligus tanpa pagination. Jika data sudah banyak, halaman akan sangat panjang dan performa query menurun.
